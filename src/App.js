@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { tambah, kurang } from "./Redux/Action/IniSiaction";
 
 function App() {
+  const tampilandata = useSelector((state) => state.IniSireducer);
+  const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>{tampilandata.nilai}</div>
+      <div>
+        <button onClick={() => dispatch(tambah())}>Tambah</button>
+        <button onClick={() => dispatch(kurang())}>Kurang</button>
+      </div>
     </div>
   );
 }
